@@ -29,11 +29,15 @@ class MyApp:
 		self.button1.configure(text="Left", background= "green")
 		self.button1.grid(row=0,column=0)
 		
+		self.button2 = Button(self.myContainer1)
+		self.button2.configure(text="Right", background= "orange")
+		self.button2.grid(row=0,column=1)
+		
 	
 		# "Bind" an action to the first button												
 		self.button1.bind("<Button-1>", self.button1Click)
 		 
-		  
+		self.button2.bind("<Button-1>", self.button2Click)
 		# This creates the drawpad - no need to change this 
 		drawpad.pack()
 		
@@ -47,9 +51,13 @@ class MyApp:
 		global drawpad
 		global drawpadwidth
 		global drawpadheight
+	        drawpad.move(oval,-20,0)
 	
 	# Add the button2Click method
-		
+	def button2Click(self, event):   
+		global drawpad
+		drawpad.move(oval,20,0)
+	
 myapp = MyApp(root)
 
 root.mainloop()
